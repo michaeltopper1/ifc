@@ -17,6 +17,7 @@
 #' @export nschools
 #'
 #'
+#'
 
 
 nschools <- function(data, column_name) {
