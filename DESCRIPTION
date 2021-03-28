@@ -1,0 +1,20 @@
+Package: ifc
+Title: Functions for Fraternity Project
+Version: 0.0.0.1
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "michaeltopper@ucsb.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Contains functions I commonly use in the fraternity project. In addition, there is also a template for a working paper.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+  dplyr,
+  lubridate,
+  rlang
