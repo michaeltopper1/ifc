@@ -24,7 +24,7 @@
 event_study_month <- function(data, year_min, year_max, window_length) {
   window <- c(1:window_length)
   ## first need to deal with LSU - it has a weird 1 week pause inbetween moratoria - changing closure 1 date to closure 2 date
-  monthly_crime <- monthly_crime %>%
+  monthly_crime <- data %>%
     mutate(across(c(closure_1_end, closure_2_end), ~ as.character(.))) %>%
     mutate(closure_1_end = ifelse(university == "Louisiana State University and Agricultural & Mechanical College",
                                   closure_2_end, closure_1_end)) %>%

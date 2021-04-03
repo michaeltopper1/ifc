@@ -2,6 +2,7 @@
 
 export(avg_closure)
 export(event_study_month)
+export(event_study_week)
 export(ihs_transform)
 export(log1_transform)
 export(nschools)
