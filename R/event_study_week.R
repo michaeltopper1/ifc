@@ -31,13 +31,17 @@ event_study_week <- function(data, window_length, reference_week) {
   ## getting only the columns I want
   weekly_crime <- weekly_crime %>%
     select(university, starts_with("closure_1"), treatment, alcohol_offense, sexual_assault,
-           robbery_burglary, theft, drug_offense, week, total_students_all)
+           robbery_burglary, theft, drug_offense, week, total_students_all,
+           ftime_total_undergrad, total_undergrad_asian,
+           total_undergrad_black, total_undergrad_hispanic, graduation_rate)
 
   ## getting two closure schools
   ## rename the columns so that everything is standardized by closure_1 and closure_1_end
   two_closure_schools <- data %>%
     select(university, closure_2, closure_2_end, treatment, alcohol_offense, sexual_assault,
-           robbery_burglary, theft, drug_offense,  week, total_students_all) %>%
+           robbery_burglary, theft, drug_offense,  week, total_students_all,
+           ftime_total_undergrad, total_undergrad_asian,
+           total_undergrad_black, total_undergrad_hispanic, graduation_rate) %>%
     mutate(university = ifelse(!is.na(closure_2),paste0(university, "_2"), university)) %>%
     rename(closure_1 = closure_2, closure_1_end = closure_2_end) %>%
     filter(str_detect(university, "_2$")) %>%
@@ -91,6 +95,15 @@ event_study_week <- function(data, window_length, reference_week) {
 
   event_study <- event_study %>%
     mutate(!!sym(reference_week) := 0)
+
+  event_study <- event_study %>%
+    mutate(across(c(sexual_assault, alcohol_offense,
+                    theft, robbery_burglary, drug_offense), ~./total_students_all * 100000,
+                  .names = '{.col}_per100')) %>%
+    mutate(year = year(week), month = month(week)) %>%
+    group_by(university, month) %>%
+    mutate(uni_month = cur_group_id()) %>%
+    ungroup()
 
   return(event_study)
 }
