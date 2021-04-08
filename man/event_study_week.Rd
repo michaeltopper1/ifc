@@ -4,12 +4,14 @@
 \alias{event_study_week}
 \title{Creates the Event Study tibble for Analysis-Weekly Data.}
 \usage{
-event_study_week(data, window_length)
+event_study_week(data, window_length, reference_week)
 }
 \arguments{
 \item{data}{an object/dataframe/tibble.}
 
 \item{window_length}{the column in the object that contains the  end date of the first moratorium.}
+
+\item{reference_week}{a number for which year you want to be the reference year. It will be paste0("treatment_minus_", reference_year)}
 }
 \description{
 \code{event_study_week} returns a tibble ready for event study analysis in units of weeks
@@ -20,6 +22,6 @@ Moreover, the month prior to treatment is the reference month (e.g. set to zero)
 any amount of treatment are considered a treated month (e.g. 2 weeks in March = full month of March treated).
 }
 \examples{
-event_study_month(monthly_crime, 2014, 2019, 4)
+event_study_week(weekly_panel,  4, 1)
 
 }
