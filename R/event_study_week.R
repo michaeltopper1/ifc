@@ -33,7 +33,7 @@ event_study_week <- function(data, window_length, reference_week) {
     select(university, starts_with("closure_1"), treatment, alcohol_offense, sexual_assault,
            robbery_burglary, theft, drug_offense, week, total_students_all,
            ftime_total_undergrad, total_undergrad_asian,
-           total_undergrad_black, total_undergrad_hispanic, graduation_rate)
+           total_undergrad_black, total_undergrad_hispanic, graduation_rate_total_cohort_)
 
   ## getting two closure schools
   ## rename the columns so that everything is standardized by closure_1 and closure_1_end
@@ -41,7 +41,7 @@ event_study_week <- function(data, window_length, reference_week) {
     select(university, closure_2, closure_2_end, treatment, alcohol_offense, sexual_assault,
            robbery_burglary, theft, drug_offense,  week, total_students_all,
            ftime_total_undergrad, total_undergrad_asian,
-           total_undergrad_black, total_undergrad_hispanic, graduation_rate) %>%
+           total_undergrad_black, total_undergrad_hispanic, graduation_rate_total_cohort_) %>%
     mutate(university = ifelse(!is.na(closure_2),paste0(university, "_2"), university)) %>%
     rename(closure_1 = closure_2, closure_1_end = closure_2_end) %>%
     filter(str_detect(university, "_2$")) %>%
