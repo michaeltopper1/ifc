@@ -36,8 +36,8 @@ event_study_day <- function(data, window, cluster_blocks, reference_days){
     closure_plus_end <- paste0("closure_plus_",i, "_end")
     colname_treat <- paste0("treatment_plus_", i)
     event_study <- event_study %>%
-      mutate(!!sym(closure_plus) := (closure_1_end + (i-1) *days(period_blocks))) %>%
-      mutate(!!sym(closure_plus_end) := closure_1_end + ((i) * days(period_blocks))) %>%
+      mutate(!!sym(closure_plus) := (closure_1_end + (i-1) *days(cluster_blocks))) %>%
+      mutate(!!sym(closure_plus_end) := closure_1_end + ((i) * days(cluster_blocks))) %>%
       mutate(!!sym(colname_treat) := ifelse(date >= !!sym(closure_plus) & date < !!sym(closure_plus_end), 1, 0))
   }
 
@@ -46,8 +46,8 @@ event_study_day <- function(data, window, cluster_blocks, reference_days){
     closure_minus_end <- paste0("closure_minus_",i, "_end")
     colname_treat <- paste0("treatment_minus_", i)
     event_study <- event_study %>%
-      mutate(!!sym(closure_minus) := closure_1 -  i *days(period_blocks)) %>%
-      mutate(!!sym(closure_minus_end) := closure_1 - ((i- 1) * days(period_blocks))) %>%
+      mutate(!!sym(closure_minus) := closure_1 -  i *days(cluster_blocks)) %>%
+      mutate(!!sym(closure_minus_end) := closure_1 - ((i- 1) * days(cluster_blocks))) %>%
       mutate(!!sym(colname_treat) := ifelse(date >= !!sym(closure_minus) & date < !!sym(closure_minus_end), 1, 0))
 
   }
