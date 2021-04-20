@@ -18,7 +18,7 @@
 #' @export event_study_stagger
 #'
 #'
-event_study_stagger_day<- function(data, window, cluster_blocks, reference_day) {
+event_study_stagger<- function(data, window, cluster_blocks, reference_day) {
   window <- c(1:window)
   event_study <- data %>%
     mutate(across(c(closure_1_end, closure_2_end), ~ as.character(.))) %>%
