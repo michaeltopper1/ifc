@@ -26,7 +26,10 @@ untreated_universities <- function() {
                               "Delaware State University",
                               "University of California-Irvine",
                               "California State University-Fullerton",
-                              "SUNY at Albany")
+                              "SUNY at Albany",
+                              "University of Louisiana at Lafayette",
+                              "University of Southern California",
+                              "University of California-Santa Cruz")
   return(untreated_universities)
 }
 
