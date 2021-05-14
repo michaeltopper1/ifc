@@ -29,7 +29,9 @@ untreated_universities <- function() {
                               "SUNY at Albany",
                               "University of Louisiana at Lafayette",
                               "University of Southern California",
-                              "University of California-Santa Cruz")
+                              "University of California-Santa Cruz",
+                              "The University of Texas at Austin",
+                              "Bloomsburg University of Pennsylvania")
   return(untreated_universities)
 }
 
