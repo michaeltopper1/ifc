@@ -1,7 +1,7 @@
 #' Returns list of universities which underwent a fraternity death in 2014-2019 but no moratorium.
 #'
 #' @description
-#' `untreated_universities` returns a list of universities in which a moratorium has occurred due to death in addition to never-treated schools.
+#' `death_untreated_universities` returns a list of universities in which a moratorium has occurred due to death in addition to never-treated schools.
 #'
 #' @details
 #' This function simply returns a list of schools.
@@ -9,10 +9,10 @@
 #' @examples
 #' death_universities()
 #'
-#' @export untreated_universities
+#' @export death_untreated_universities
 #'
 
-untreated_universities <- function() {
+death_untreated_universities <- function() {
   untreated_universities <- c("University of Kentucky",
                               "Hampden-Sydney College",
                               "University of Nevada-Reno",

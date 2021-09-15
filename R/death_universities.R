@@ -1,7 +1,7 @@
 #' Returns list of universities which underwent a fraternity death in 2014-2019.
 #'
 #' @description
-#' `death_universities` returns a list of universities in which a moratorium has occurred due to death in addition to never-treated schools.
+#' `death_universities` returns a list of universities in which a moratorium has occurred due to death in addition to never-treated (but had death) schools.
 #'
 #' @details
 #' This function simply returns a list of universities. Does not rely on anything.

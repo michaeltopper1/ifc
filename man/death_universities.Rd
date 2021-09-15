@@ -7,7 +7,7 @@
 death_universities()
 }
 \description{
-\code{death_universities} returns a list of universities in which a moratorium has occurred due to death in addition to never-treated schools.
+\code{death_universities} returns a list of universities in which a moratorium has occurred due to death in addition to never-treated (but had death) schools.
 }
 \details{
 This function simply returns a list of universities. Does not rely on anything.
