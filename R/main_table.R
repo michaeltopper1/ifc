@@ -36,7 +36,7 @@ main_table <- function(full_sample, weekends, weekdays){
                gof_map = gm_first) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
-  weekend <- modelsummary(weekends, stars = T, output = "data.frame",
+  weekends <- modelsummary(weekends, stars = T, output = "data.frame",
                           coef_map = c("semester_before_dose_indicator" = "Semester Before",
                                        "treatment" = "Moratorium",
                                        "semester_after_dose_indicator" = "Semester After",
@@ -54,6 +54,6 @@ main_table <- function(full_sample, weekends, weekdays){
                             gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
-  table <- bind_rows(full_sample, weekend, weekdays)
+  table <- bind_rows(full, weekends, weekdays)
   return(table)
 }
