@@ -1,7 +1,7 @@
 #' Finds the Average Length of IFC Moratoria.
 #'
 #' @description
-#' `main_table` returns the main table broken down by subsets of fullsample/weekend/weekdays.
+#' `main_table_semester` returns the main table broken down by subsets of fullsample/weekend/weekdays.
 #'
 #' @details
 #' This function relies on dplyr, modelsummary, and tibble packages to work.
@@ -13,10 +13,10 @@
 #' @examples
 #' main_table(full_sample, weekends, weekdays)
 #'
-#' @export main_table
+#' @export main_table_semester
 #'
 
-main_table <- function(full_sample, weekends, weekdays){
+main_table_semester <- function(full_sample, weekends, weekdays){
   gm_first <- tribble(~raw, ~clean, ~fmt,
                       "nobs", "Num.Obs", ~fmt)
   gm <- tribble(~raw, ~clean, ~fmt,
@@ -29,29 +29,29 @@ main_table <- function(full_sample, weekends, weekdays){
                 "FE: date", "FE: Day-by-Month-by-Year", ~fmt,
                 "FE: university_by_year_by_semester_number", "FE: University-by-Year-by-Semester-Number", ~fmt)
   full <- modelsummary(full_sample, stars = T, output = "data.frame",
-               coef_map = c("semester_before_dose_indicator" = "Semester Before",
-                            "treatment" = "Moratorium",
-                            "semester_after_dose_indicator" = "Semester After",
-                            "week_before" = "Week Before",
-                            "week_after" = "Week After",
-                            "lead_1" = "Week Before",
-                            "lead_2" = "2 Weeks Before",
-                            "lag_1" = "Week After",
-                            "lag_2" = "2 Weeks After"),
-               gof_map = gm_first) %>%
+                       coef_map = c("semester_before_dose_indicator" = "Semester Before",
+                                    "treatment" = "Moratorium",
+                                    "semester_after_dose_indicator" = "Semester After",
+                                    "week_before" = "Week Before",
+                                    "week_after" = "Week After",
+                                    "lead_1" = "Semester Before",
+                                    "lead_2" = "2 Semesters Before",
+                                    "lag_1" = "Semester After",
+                                    "lag_2" = "2 Semesters After"),
+                       gof_map = gm_first) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
   weekends <- modelsummary(weekends, stars = T, output = "data.frame",
-                          coef_map = c("semester_before_dose_indicator" = "Semester Before",
-                                       "treatment" = "Moratorium",
-                                       "semester_after_dose_indicator" = "Semester After",
-                                       "week_before" = "Week Before",
-                                       "week_after" = "Week After",
-                                       "lead_1" = "Week Before",
-                                       "lead_2" = "2 Weeks Before",
-                                       "lag_1" = "Week After",
-                                       "lag_2" = "2 Weeks After"),
-                          gof_map = gm_first) %>%
+                           coef_map = c("semester_before_dose_indicator" = "Semester Before",
+                                        "treatment" = "Moratorium",
+                                        "semester_after_dose_indicator" = "Semester After",
+                                        "week_before" = "Week Before",
+                                        "week_after" = "Week After",
+                                        "lead_1" = "Week Before",
+                                        "lead_2" = "2 Weeks Before",
+                                        "lag_1" = "Week After",
+                                        "lag_2" = "2 Weeks After"),
+                           gof_map = gm_first) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
   weekdays <-  modelsummary(weekdays, stars = T, output = "data.frame",
@@ -60,10 +60,10 @@ main_table <- function(full_sample, weekends, weekdays){
                                          "semester_after_dose_indicator" = "Semester After",
                                          "week_before" = "Week Before",
                                          "week_after" = "Week After",
-                                         "lead_1" = "Week Before",
-                                         "lead_2" = "2 Weeks Before",
-                                         "lag_1" = "Week After",
-                                         "lag_2" = "2 Weeks After"),
+                                         "lead_1" = "Semester Before",
+                                         "lead_2" = "2 Semesters Before",
+                                         "lag_1" = "Semester After",
+                                         "lag_2" = "2 Semesters After"),
                             gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
