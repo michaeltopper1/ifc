@@ -29,39 +29,27 @@ main_table_semester <- function(full_sample, weekends, weekdays){
                 "FE: date", "FE: Day-by-Month-by-Year", ~fmt,
                 "FE: university_by_year_by_semester_number", "FE: University-by-Year-by-Semester-Number", ~fmt)
   full <- modelsummary(full_sample, stars = T, output = "data.frame",
-                       coef_map = c("semester_before_dose_indicator" = "Semester Before",
-                                    "treatment" = "Moratorium",
-                                    "semester_after_dose_indicator" = "Semester After",
-                                    "week_before" = "Week Before",
-                                    "week_after" = "Week After",
+                       coef_map = c("lead_2" = "2 Semesters Before",
                                     "lead_1" = "Semester Before",
-                                    "lead_2" = "2 Semesters Before",
+                                    "treatment" = "Moratorium",
                                     "lag_1" = "Semester After",
                                     "lag_2" = "2 Semesters After"),
                        gof_map = gm_first) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
   weekends <- modelsummary(weekends, stars = T, output = "data.frame",
-                           coef_map = c("semester_before_dose_indicator" = "Semester Before",
+                           coef_map = c("lead_2" = "2 Semesters Before",
+                                        "lead_1" = "Semester Before",
                                         "treatment" = "Moratorium",
-                                        "semester_after_dose_indicator" = "Semester After",
-                                        "week_before" = "Week Before",
-                                        "week_after" = "Week After",
-                                        "lead_1" = "Week Before",
-                                        "lead_2" = "2 Weeks Before",
-                                        "lag_1" = "Week After",
-                                        "lag_2" = "2 Weeks After"),
+                                        "lag_1" = "Semester After",
+                                        "lag_2" = "2 Semesters After"),
                            gof_map = gm_first) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
   weekdays <-  modelsummary(weekdays, stars = T, output = "data.frame",
-                            coef_map = c("semester_before_dose_indicator" = "Semester Before",
-                                         "treatment" = "Moratorium",
-                                         "semester_after_dose_indicator" = "Semester After",
-                                         "week_before" = "Week Before",
-                                         "week_after" = "Week After",
+                            coef_map = c("lead_2" = "2 Semesters Before",
                                          "lead_1" = "Semester Before",
-                                         "lead_2" = "2 Semesters Before",
+                                         "treatment" = "Moratorium",
                                          "lag_1" = "Semester After",
                                          "lag_2" = "2 Semesters After"),
                             gof_map = gm) %>%
