@@ -1,6 +1,6 @@
 Package: ifc
 Title: Functions for Fraternity Project
-Version: 1.0.3.4
+Version: 1.0.3.5
 Authors@R: 
     person(given = "Michael",
            family = "Topper",
