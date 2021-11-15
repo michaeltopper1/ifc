@@ -4,7 +4,7 @@
 \alias{reghdfe_pois}
 \title{High dimension fixed effects regression (Poisson) with fixest package.}
 \usage{
-reghdfe_pois(data, outcome, explanatory_vars, fixed_effects, cluster)
+reghdfe_pois(data, outcome, explanatory_vars, fixed_effects = NULL, cluster)
 }
 \arguments{
 \item{data}{tibble or dataframe.}
@@ -13,7 +13,7 @@ reghdfe_pois(data, outcome, explanatory_vars, fixed_effects, cluster)
 
 \item{explanatory_vars}{vector of explanatory variables. Must be a string.}
 
-\item{fixed_effects}{a vector of fixed effects. Must be a string.}
+\item{fixed_effects}{a vector of fixed effects. Must be a string. Default to NULL.}
 
 \item{cluster}{column to cluster by. Must be a string.}
 }
@@ -24,6 +24,6 @@ reghdfe_pois(data, outcome, explanatory_vars, fixed_effects, cluster)
 This function calls the fixest::fepois() function, but simiplifies the typing.
 }
 \examples{
-reghdfe(mtcars, "mpg", "hp", "am", "am")
+reghdfe_pois(mtcars, "mpg", "hp", "am", "am")
 
 }
