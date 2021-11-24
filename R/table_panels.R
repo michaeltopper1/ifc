@@ -28,7 +28,7 @@ table_panels <- function(...) {
   full <- map(data, ~modelsummary(..., stars = T, output = "data.frame",
                        coef_map = c("lead_2" = "2 Weeks Before",
                                     "lead_1" = "Week Before",
-                                    "treatment" = "Moratorium",
+                                    "treatment" = "In Moratorium",
                                     "lag_1" = "Week After",
                                     "lag_2" = "2 Weeks After"),
                        gof_map = gm) %>%

@@ -4,20 +4,18 @@
 \alias{main_table}
 \title{Finds the Average Length of IFC Moratoria.}
 \usage{
-main_table(full_sample, weekends, weekdays)
+main_table(..., last_panel)
 }
 \arguments{
-\item{full_sample}{a list of fixest objects. This will be the regressions for the full sample.}
+\item{...}{fixest objects. This will be the regressions for however many fixest objects needed.}
 
-\item{weekends}{a list of fixest objects. This will be the regressions for the weekend sample.}
-
-\item{weekdays}{a list of fixest objects. This will be the regressions for the weekdays.}
+\item{last_panel}{the final regression panel to put on. This will add on the fixed effects.}
 }
 \description{
 \code{main_table} returns the main table broken down by subsets of fullsample/weekend/weekdays.
 }
 \details{
-This function relies on dplyr, modelsummary, and tibble packages to work.
+This function relies on dplyr, modelsummary, purrr, and tibble packages to work.
 }
 \examples{
 main_table(full_sample, weekends, weekdays)
