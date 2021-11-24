@@ -17,7 +17,7 @@
 table_panels <- function(...) {
   data <- list(...)
   gm <- tribble(~raw, ~clean, ~fmt,
-                "nobs", "Num.Obs.", ~fmt,
+                "nobs", "Observations", ~fmt,
                 "FE: day_of_week","FE: Day-of-Week", ~fmt,
                 "FE: semester_number", "FE: Semester-by-Year", ~fmt,
                 "FE: university","FE: University", ~fmt,
