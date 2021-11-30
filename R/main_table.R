@@ -33,7 +33,7 @@ main_table <- function(..., last_panel){
                 "FE: university_by_day_of_week_by_month", "FE: University by Day of Week by Month", ~fmt,
                 "FE: university_by_academic_year_by_month_by_day_of_week", "FE: University by Academic Year by Month by Day of Week", ~fmt,
                 "FE: academic_year", "FE: Academic Year", ~fmt,
-                "FE: spring_semester", "FE: Semester Type", ~fmt,
+                "FE: spring_semester", "FE: Semester (Spring/Fall)", ~fmt,
                 "FE: day_of_week_by_semester_number", "FE: Day of Week by Semester by Year", ~fmt,
                 "FE: university_by_month_by_academic_year", "FE: University by Month by Academic Year", ~fmt,
                 "FE: semester_by_academic_year", "FE: Semester by Academic Year", ~fmt,
