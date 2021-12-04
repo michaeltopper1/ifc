@@ -22,6 +22,7 @@ main_table <- function(..., last_panel){
   gm <- tribble(~raw, ~clean, ~fmt,
                 "nobs", "Observations", ~fmt,
                 "FE: day_of_week","FE: Day of Week", ~fmt,
+                "FE: holiday", "FE: Holiday", ~fmt,
                 "FE: semester_number", "FE: Semester by Year", ~fmt,
                 "FE: university","FE: University", ~fmt,
                 "FE: year", "FE: Year", ~fmt,
