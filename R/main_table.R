@@ -42,20 +42,16 @@ main_table <- function(..., last_panel){
                 "FE: day_of_week_by_spring_semester", "FE: Day of Week by Semester", ~fmt,
                 "FE: day_of_week_by_semester_by_academic_year", "FE: Day of Week by Academic Year by Semester", ~fmt)
   first_panels <- map_df(data, ~modelsummary(., stars = T, output = "data.frame",
-                             coef_map = c("lead_2" = "2 Weeks Before",
-                                          "lead_1" = "Week Before",
+                             coef_map = c("week_before" = "Week Before",
                                           "treatment" = "In Moratorium",
-                                          "lag_1" = "Week After",
-                                          "lag_2" = "2 Weeks After"),
+                                          "week_after" = "Week After"),
                              gof_map = gm_first) %>%
            mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
            select(matches("term|^model")))
   final_panel <-  modelsummary(last_panel, stars = T, output = "data.frame",
-                            coef_map = c("lead_2" = "2 Weeks Before",
-                                         "lead_1" = "Week Before",
+                            coef_map = c("week_before" = "Week Before",
                                          "treatment" = "In Moratorium",
-                                         "lag_1" = "Week After",
-                                         "lag_2" = "2 Weeks After"),
+                                         "week_after" = "Week After"),
                             gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
