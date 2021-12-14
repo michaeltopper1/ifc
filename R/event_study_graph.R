@@ -34,6 +34,6 @@ event_study_graph <- function(x, window_size, reference_period = window_size) {
     geom_errorbar(aes(ymin = conf.low, ymax = conf.high), alpha =0.8) +
     geom_point() +
     theme_minimal() +
-    geom_hline(yintercept = 0, color = "dark red")
+    geom_hline(yintercept = 0, color = "dark red", linetype = "dashed")
   return(plot)
 }
