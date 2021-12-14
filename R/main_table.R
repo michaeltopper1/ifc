@@ -44,14 +44,18 @@ main_table <- function(..., last_panel){
   first_panels <- map_df(data, ~modelsummary(., stars = T, output = "data.frame",
                              coef_map = c("week_before" = "Week Before",
                                           "treatment" = "In Moratorium",
-                                          "week_after" = "Week After"),
+                                          "week_after" = "Week After",
+                                          "treatment:ifc_enacted" = "In Moratorium",
+                                          "treatment:university_enacted" = "In Moratorium"),
                              gof_map = gm_first) %>%
            mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
            select(matches("term|^model")))
   final_panel <-  modelsummary(last_panel, stars = T, output = "data.frame",
                             coef_map = c("week_before" = "Week Before",
                                          "treatment" = "In Moratorium",
-                                         "week_after" = "Week After"),
+                                         "week_after" = "Week After",
+                                         "treatment:ifc_enacted" = "In Moratorium",
+                                         "treatment:university_enacted" = "In Moratorium"),
                             gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
