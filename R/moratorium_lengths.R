@@ -21,6 +21,7 @@ moratorium_lengths <- function() {
     group_by(university) %>%
     mutate(treatment_na = ifelse(treatment == 0, NA, treatment)) %>%
     mutate(treatment_na = ifelse(treatment_na > 0 & (!is.na(closure_2)) & date >= closure_2, 2, treatment_na)) %>%
+    mutate(treatment_na = ifelse(treatment_na > 1 & (!is.na(closure_3)) & date >= closure_3, 3, treatment_na)) %>%
     mutate(treatment_na = ifelse(is.na(treatment_na), 0, treatment_na)) %>%
     ungroup() %>%
     filter(treatment_na >0) %>%
