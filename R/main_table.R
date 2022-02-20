@@ -27,6 +27,7 @@ main_table <- function(..., last_panel){
                 "FE: game_occurred", "FE: Game Day", ~fmt,
                 "FE: spring_semester", "FE: Semester (Spring/Fall)", ~fmt,
                 "FE: university","FE: University", ~fmt,
+                "FE: ori", "FE: Agency", ~fmt,
                 "FE: year", "FE: Year", ~fmt,
                 "FE: academic_year", "FE: Academic Year", ~fmt,
                 "FE: university_by_semester_number", "FE: University by Semester Number", ~fmt,
@@ -47,7 +48,10 @@ main_table <- function(..., last_panel){
                 "FE: university_by_year", "FE: University by Year", ~fmt,
                 "FE: university_by_month_by_year", "FE: University by Month by Year", ~fmt,
                 "FE: university_by_year_by_week", "FE: University by Year by Week", ~fmt,
-                "FE: university_by_week_by_year", "FE: University by Week by Year", ~fmt)
+                "FE: university_by_week_by_year", "FE: University by Week by Year", ~fmt,
+                "FE: ori_by_month", "Agency by Month", ~fmt,
+                "FE: ori_by_week", "Agency by Week", ~fmt,
+                "FE: ori_by_month_by_week", "Agency by Month by Week", ~fmt)
   first_panels <- map_df(data, ~modelsummary(., stars = T, output = "data.frame",
                              coef_map = c("week_before" = "Week Before",
                                           "treatment" = "In Moratorium",
