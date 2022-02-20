@@ -51,7 +51,9 @@ main_table <- function(..., last_panel){
                 "FE: university_by_week_by_year", "FE: University by Week by Year", ~fmt,
                 "FE: ori_by_month", "Agency by Month", ~fmt,
                 "FE: ori_by_week", "Agency by Week", ~fmt,
-                "FE: ori_by_month_by_week", "Agency by Month by Week", ~fmt)
+                "FE: ori_by_month_by_week", "Agency by Month by Week", ~fmt,
+                "FE: ori_by_academic_year_by_semester", "Agency by Semester by Academic Year", ~fmt,
+                "FE: ori_by_academic_year", "Agency by Academic Year", ~fmt)
   first_panels <- map_df(data, ~modelsummary(., stars = T, output = "data.frame",
                              coef_map = c("week_before" = "Week Before",
                                           "treatment" = "In Moratorium",
