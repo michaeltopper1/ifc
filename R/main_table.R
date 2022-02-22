@@ -65,7 +65,12 @@ main_table <- function(..., last_panel){
                                           "treatment:university_enacted" = "In Moratorium",
                                           "treatment:below_q33" = "In Moratorium",
                                           "treatment:between_q33_q66" = "In Moratorium",
-                                          "treatment:above_q66" = "In Moratorium"),
+                                          "treatment:above_q66" = "In Moratorium",
+                                          "treatment:game_occurred" = "Moratorium x Game Day",
+                                          "game_occurred:treatment" = "Moratorium x Game Day",
+                                          "treatment:ifc_frac_first_quant" = "In Moratorium",
+                                          "treatment:ifc_frac_second_quant" = "In Moratorium",
+                                          "treatment:ifc_frac_third_quant" = "In Moratorium"),
                              gof_map = gm_first) %>%
            mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
            select(matches("term|^model")))
@@ -80,7 +85,12 @@ main_table <- function(..., last_panel){
                                          "treatment:university_enacted" = "In Moratorium",
                                          "treatment:below_q33" = "In Moratorium",
                                          "treatment:between_q33_q66" = "In Moratorium",
-                                         "treatment:above_q66" = "In Moratorium"),
+                                         "treatment:above_q66" = "In Moratorium",
+                                         "treatment:game_occurred" = "Moratorium x Game Day",
+                                         "game_occurred:treatment" = "Moratorium x Game Day",
+                                         "treatment:ifc_frac_first_quant" = "In Moratorium",
+                                         "treatment:ifc_frac_second_quant" = "In Moratorium",
+                                         "treatment:ifc_frac_third_quant" = "In Moratorium"),
                             gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
     select(matches("term|^model"))
