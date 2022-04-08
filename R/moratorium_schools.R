@@ -48,7 +48,6 @@ moratorium_schools <- function() {
                  'University of Missouri-Columbia',
                  'University of New Mexico-Main Campus',
                  'University of Pittsburgh-Pittsburgh Campus',
-                 'University of Vermont',
                  'University of Virginia-Main Campus',
                  'Washington State University',
                  'West Virginia University')
