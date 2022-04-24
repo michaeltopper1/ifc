@@ -1,4 +1,4 @@
-#' Finds the Average Length of IFC Moratoria.
+#' Gives an output dataframe ready for kableExtra
 #'
 #' @description
 #' `main_table` returns the main table broken down by subsets of fullsample/weekend/weekdays.
@@ -54,7 +54,7 @@ main_table <- function(..., last_panel){
                 "FE: ori_by_month_by_week", "FE: Agency by Month by Week", ~fmt,
                 "FE: ori_by_academic_year", "FE: Agency by Academic Year", ~fmt,
                 "FE: ori_by_academic_year_by_semester", "FE: Agency by Semester by Academic Year", ~fmt)
-  first_panels <- map_df(data, ~modelsummary(., stars = T, output = "data.frame",
+  first_panels <- map_df(data, ~modelsummary(., stars = c('*' = .1, '**' = .05, '***' = .01), output = "data.frame",
                              coef_map = c("week_before" = "Week Before",
                                           "treatment" = "In Moratorium",
                                           "week_after" = "Week After",
@@ -74,7 +74,7 @@ main_table <- function(..., last_panel){
                              gof_map = gm_first) %>%
            mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
            select(matches("term|^model")))
-  final_panel <-  modelsummary(last_panel, stars = T, output = "data.frame",
+  final_panel <-  modelsummary(last_panel, stars = c('*' = .1, '**' = .05, '***' = .01), output = "data.frame",
                             coef_map = c("week_before" = "Week Before",
                                          "treatment" = "In Moratorium",
                                          "week_after" = "Week After",

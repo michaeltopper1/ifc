@@ -2,7 +2,7 @@
 % Please edit documentation in R/main_table.R
 \name{main_table}
 \alias{main_table}
-\title{Finds the Average Length of IFC Moratoria.}
+\title{Gives an output dataframe ready for kableExtra}
 \usage{
 main_table(..., last_panel)
 }

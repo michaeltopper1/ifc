@@ -4,24 +4,22 @@
 \alias{event_study_day}
 \title{Creates the Event Study tibble for analysis at Daily Level Data.}
 \usage{
-event_study_day(data, window, cluster_blocks, reference_day)
+event_study_day(data, leads_lags, clusters)
 }
 \arguments{
-\item{data}{an object/dataframe/tibble.}
+\item{data}{an object/dataframe/tibble (daily_crime).}
 
-\item{window}{how big the event window is (in weeks)}
+\item{leads_lags}{how big the event window is.}
 
-\item{cluster_blocks}{a number for how many days you want clustered together. I usually do 7 for week.}
-
-\item{reference_days}{a number for which year you want to be the reference week It will be paste0("treatment_minus_", reference_year)}
+\item{clusters}{a number for how many days you want clustered together.}
 }
 \description{
-\code{event_study_day} returns a tibble ready for event study analysis in units of days
+\code{event_study_day} returns a tibble ready for event study analysis in units of days (no staggers)
 }
 \details{
 This function creates the event study tibble needed to do analysis in event study framework.
 }
 \examples{
-event_study_day(daily_crime,  window = 8, cluster_blocks = 7, reference_days =1 )
+event_study_day(daily_crime, leads_lags = 8, bin_length =7)
 
 }
