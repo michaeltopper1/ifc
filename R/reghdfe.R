@@ -19,6 +19,8 @@
 
 
 reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, cluster){
+  ## this is to get the data into the call argument correctly see stackoverflow remark
+  dataname <- as.symbol(deparse(substitute(data)))
   if (is.null(fixed_effects)) {
    formula <-  as.formula(paste0(
       outcome, "~",
@@ -30,5 +32,11 @@ reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, clust
       paste(explanatory_vars, collapse = "+"),
       paste("|"), paste(fixed_effects, collapse = "+")))
   }
-  return(feols(formula,cluster = cluster, data = data))
+  model <- feols(formula,cluster = cluster, data = data)
+  ## changing the calls to match the original
+  model$call$fml <- formula
+  model$call$cluster <- cluster
+  model$call$data <- dataname
+  ## returning the model
+  return(model)
 }
