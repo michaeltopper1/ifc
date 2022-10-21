@@ -73,7 +73,7 @@ main_table <- function(..., last_panel){
                                           "treatment:ifc_frac_third_quant" = "In Moratorium"),
                              gof_map = gm_first) %>%
            mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
-           select(matches("term|^model")))
+             select(-part, -statistic))
   final_panel <-  modelsummary(last_panel, stars = c('*' = .1, '**' = .05, '***' = .01), output = "data.frame",
                             coef_map = c("week_before" = "Week Before",
                                          "treatment" = "In Moratorium",
@@ -93,7 +93,7 @@ main_table <- function(..., last_panel){
                                          "treatment:ifc_frac_third_quant" = "In Moratorium"),
                             gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
-    select(matches("term|^model"))
+    select(-part, -statistic)
   table <- bind_rows(first_panels, final_panel)
   return(table)
 }

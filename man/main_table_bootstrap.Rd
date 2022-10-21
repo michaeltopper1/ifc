@@ -4,14 +4,14 @@
 \alias{main_table_bootstrap}
 \title{Gives an output dataframe ready for kableExtra when using fwildclusterboot standard errors}
 \usage{
-main_table_bootstrap(..., last_panel, display_fe = T)
+main_table_bootstrap(first_panel, last_panel, display_fe = T)
 }
 \arguments{
-\item{...}{fixest objects. This will be the regressions for however many fixest objects needed.}
-
 \item{last_panel}{the final regression panel to put on. This will add on the fixed effects.}
 
 \item{display_fe}{Whether or not to display the fixed effects chart in the table}
+
+\item{...}{fixest objects. This will be the regressions for however many fixest objects needed.}
 }
 \description{
 \code{main_table_bootstrap} returns the main table when using fwildcluster boot standard errors

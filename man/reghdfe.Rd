@@ -4,7 +4,14 @@
 \alias{reghdfe}
 \title{High dimension fixed effects regression (OLS) with fixest package.}
 \usage{
-reghdfe(data, outcome, explanatory_vars, fixed_effects = NULL, cluster)
+reghdfe(
+  data,
+  outcome,
+  explanatory_vars,
+  fixed_effects = NULL,
+  cluster,
+  weights = NULL
+)
 }
 \arguments{
 \item{data}{tibble or dataframe.}
@@ -16,6 +23,8 @@ reghdfe(data, outcome, explanatory_vars, fixed_effects = NULL, cluster)
 \item{fixed_effects}{a vector of fixed effects. Must be a string. Defaults to NULL for no fixed effects.}
 
 \item{cluster}{column to cluster by. Must be a string.}
+
+\item{weights}{column to weight by.}
 }
 \description{
 \code{reghdfe} returns the fixest object consisting of the regression equation.

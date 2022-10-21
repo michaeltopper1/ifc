@@ -56,7 +56,7 @@ main_table_bootstrap <- function(first_panel, last_panel, display_fe = T){
                 "FE: ori_by_academic_year_by_semester", "FE: Agency by Semester by Academic Year", ~fmt)
   first_panels <- modelsummary(first_panel,estimate = "{estimate}{stars}",
                                              statistic = "[{conf.low}, {conf.high}]",
-                                             stars = c('*' = .1, '**' = .05, '***' = .01),, output = "data.frame",
+                                             stars = c('*' = .1, '**' = .05, '***' = .01), output = "data.frame",
                                              coef_map = c("week_before" = "Week Before",
                                                           "1*treatment = 0" = "In Moratorium",
                                                           "treatment" = "In Moratorium",
@@ -76,7 +76,7 @@ main_table_bootstrap <- function(first_panel, last_panel, display_fe = T){
                                                           "treatment:ifc_frac_third_quant" = "In Moratorium"),
                                              gof_map = gm_first) %>%
                            mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
-                           select(matches("term|^model"))
+                           select(-part, -statistic)
   final_panel <-  modelsummary(last_panel,  estimate = "{estimate}{stars}",
                                statistic = "[{conf.low}, {conf.high}]",
                                stars = c('*' = .1, '**' = .05, '***' = .01), output = "data.frame",
@@ -99,7 +99,7 @@ main_table_bootstrap <- function(first_panel, last_panel, display_fe = T){
                                             "treatment:ifc_frac_third_quant" = "In Moratorium"),
                                gof_map = gm) %>%
     mutate(term = ifelse(statistic == "modelsummary_tmp2", "", term)) %>%
-    select(matches("term|^model"))
+    select(-part, -statistic)
   table <- bind_rows(first_panels, final_panel)
   return(table)
 }

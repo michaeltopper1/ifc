@@ -11,14 +11,14 @@
 #' @param explanatory_vars vector of explanatory variables. Must be a string.
 #' @param fixed_effects a vector of fixed effects. Must be a string. Defaults to NULL for no fixed effects.
 #' @param cluster column to cluster by. Must be a string.
-#'
+#' @param weights column to weight by.
 #' @examples
 #' reghdfe(mtcars, "mpg", "hp", "am", "am")
 #'
 #'@export reghdfe
 
 
-reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, cluster){
+reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, cluster, weights = NULL){
   ## this is to get the data into the call argument correctly see stackoverflow remark
   dataname <- as.symbol(deparse(substitute(data)))
   if (is.null(fixed_effects)) {
@@ -32,7 +32,7 @@ reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, clust
       paste(explanatory_vars, collapse = "+"),
       paste("|"), paste(fixed_effects, collapse = "+")))
   }
-  model <- feols(formula,cluster = cluster, data = data)
+  model <- feols(formula,cluster = cluster, data = data, weights = weights)
   ## changing the calls to match the original
   model$call$fml <- formula
   model$call$cluster <- cluster
