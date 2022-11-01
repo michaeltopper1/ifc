@@ -20,7 +20,7 @@
 
 reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, cluster, weights = NULL){
   ## this is to get the data into the call argument correctly see stackoverflow remark
-  dataname <- insight::get_data(data)
+  dataname <- model.frame(data)
   if (is.null(fixed_effects)) {
    formula <-  as.formula(paste0(
       outcome, "~",
@@ -34,9 +34,9 @@ reghdfe <- function(data, outcome, explanatory_vars, fixed_effects = NULL, clust
   }
   model <- fixest::feols(formula,cluster = cluster, data = data, weights = weights)
   ## changing the calls to match the original
-  model$call$fml <- formula
-  model$call$cluster <- cluster
-  model$call$data <- dataname
+  # model$call$fml <- formula
+  # model$call$cluster <- cluster
+  # model$call$data <- dataname
   ## returning the model
   return(model)
 }

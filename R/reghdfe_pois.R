@@ -20,7 +20,7 @@
 
 reghdfe_pois <- function(data, outcome, explanatory_vars, fixed_effects = NULL, cluster){
   ## this is to get the data into the call argument correctly see stackoverflow remark
-  dataname <- insight::get_data(data)
+  dataname <- model.frame(data)
   if (is.null(fixed_effects)) {
     formula <-  as.formula(paste0(
       outcome, "~",
@@ -34,9 +34,9 @@ reghdfe_pois <- function(data, outcome, explanatory_vars, fixed_effects = NULL, 
   }
   model <- fepois(formula,cluster = cluster, data = data)
   ## changing the calls to match the original
-  model$call$fml <- formula
-  model$call$cluster <- cluster
-  model$call$data <- dataname
+  # model$call$fml <- formula
+  # model$call$cluster <- cluster
+  # model$call$data <- dataname
   ## returning the model
   return(model)
 }
