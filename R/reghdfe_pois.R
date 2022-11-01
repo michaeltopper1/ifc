@@ -20,7 +20,7 @@
 
 reghdfe_pois <- function(data, outcome, explanatory_vars, fixed_effects = NULL, cluster){
   ## this is to get the data into the call argument correctly see stackoverflow remark
-  dataname <- as.symbol(deparse(substitute(data)))
+  dataname <- insight::get_data(data)
   if (is.null(fixed_effects)) {
     formula <-  as.formula(paste0(
       outcome, "~",
