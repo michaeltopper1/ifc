@@ -31,7 +31,7 @@ event_study_graph <- function(x, window_size, reference_period = window_size) {
     ggplot(aes(x = time, y = estimate), alpha = 0.8) +
     scale_x_continuous(labels = c(-window_size:-1, "In Moratorium\n(64 day average)",1:window_size), breaks = c(-window_size:window_size)) +
     geom_rect(aes(xmin = -.5, xmax = 0.5, ymin = -Inf, ymax = Inf), fill = "cornsilk2", alpha = 0.1) +
-    geom_errorbar(aes(ymin = conf.low, ymax = conf.high), alpha =0.8) +
+    geom_errorbar(aes(ymin = conf.low, ymax = conf.high), alpha =0.8, width = 0.4) +
     geom_point() +
     theme_minimal() +
     geom_hline(yintercept = 0, color = "dark red", linetype = "dashed")
